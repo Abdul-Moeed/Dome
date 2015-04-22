@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+    <!DOCTYPE hibernate-mapping PUBLIC  
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+      
+     <hibernate-mapping>  
+      <class name="com.hibernate.util.mosques" table="mosques">  
+        <id name="place_id" type="string" column="idmosques"></id>  
+                
+      <property name="place_name" column="mosque_name" type="string"/>
+      <property name="jumma_time" column="jumma_timing" type="string"/>
+      <property name="eid_time" column="eid_timing" type="string"/>
+      <property name="sect" column="sect" type="string"/>
+      <property name="lat" column="mosques_lat" type="int"/>
+      <property name="lng" column="mosques_long" type="int"/>
+      <property name="capacity" column="capacity" type="int"/>
+                
+      </class>  
+                
+     </hibernate-mapping> 
