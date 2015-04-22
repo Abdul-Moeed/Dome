@@ -298,20 +298,12 @@
             }
         });
         $("#ex1").slider();
-        $("#ex1").on("slide", function(slideEvt) {
-            if (parseInt(current_radius)!=parseInt(slideEvt.value)*100){
-                current_radius=parseInt(slideEvt.value)*100;
-                $("#map-canvas").before("<input id=\"pac-input\" class=\"controls\" type=\"text\" placeholder=\"Search Box\">");
-                initialize(curr_pos);
-            }
-        });
-
     });
     var initialLocation;var service; var infowindow; var request;
     var siberia = new google.maps.LatLng(60, 105);
     var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
     var browserSupportFlag =  new Boolean();
-    var current_radius=500;
+    var current_radius=500;var markers=[];
 
  
 function initialize(position_state) {
@@ -335,8 +327,9 @@ function createMarker(place) {
     map: map,
     position: place.geometry.location
 });
-
+  markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
+  	infowindow.setContent("<img src=\"${pageContext.request.contextPath}/resources/img/loader.gif\">");
   	 $.ajax({
             url : '${pageContext.request.contextPath}/mosque_data.json',
             method : 'POST',
@@ -346,7 +339,7 @@ function createMarker(place) {
             	if (data["status"]=="404")
             		infowindow.setContent("Not Found in Database.");
             	else
-            		infowindow.setContent("Name : "+place.name+"<br> Latitude : "+place.geometry.location.lat()+"|| Longitude : "+place.geometry.location.lng()+"<br> Jumma Prayers : "+data["jumma_time"]+"|| Mosque Capacity(Approx.) : "+data["capacity"]+"<br> Eid Prayers : "+data["eid_time"]+"|| Sect : "+data["sect"]);
+            		infowindow.setContent("Name : "+place.name+"<br> Latitude : "+place.geometry.location.lat()+"|| Longitude : "+place.geometry.location.lng()+"<br> Jumma Prayers : "+data["jumma_time"]+"|| Mosque Capacity(Approx.) : "+data["capacity"]+"<br> Eid Prayers : "+data["eid_time"]+"|| Sect : "+data["sect"]+"<br>"+place.types);
             },
             error : function (data) {
             }
@@ -445,10 +438,37 @@ function handleNoGeolocation(errorFlag) {
     var bounds = map.getBounds();
     searchBox.setBounds(bounds);
   });
+  function clearMarkers(){
+  	for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  	}
+  }
   $("#set_loc").click(function(){
-  		$("#map-canvas").before("<input id=\"pac-input\" class=\"controls\" type=\"text\" placeholder=\"Search Box\">");
-        initialize(map.getCenter());
-  });
+  		clearMarkers();markers = [];
+  		initialLocation = new google.maps.LatLng(map.getCenter().lat(),map.getCenter().lng());
+        var request = {
+                	location:initialLocation,
+                	radius:current_radius,
+                	types: ['mosque']
+        };
+       	infowindow = new google.maps.InfoWindow();
+      	var service = new google.maps.places.PlacesService(map);
+       	service.nearbySearch(request,callback);
+    });
+  $("#ex1").on("slide", function(slideEvt) {
+  			clearMarkers();markers = [];
+            if (parseInt(current_radius)!=parseInt(slideEvt.value)*100){
+                current_radius=parseInt(slideEvt.value)*100;
+                var request = {
+                	location:initialLocation,
+                	radius:current_radius,
+                	types: ['mosque']
+            	};
+            	infowindow = new google.maps.InfoWindow();
+            	var service = new google.maps.places.PlacesService(map);
+            	service.nearbySearch(request,callback);
+            	}
+    });
 }
 google.maps.event.addDomListener(window, 'load', initialize('curr_pos'));
 </script>
