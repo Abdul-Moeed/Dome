@@ -13,12 +13,10 @@
 
    <!-- Assume test is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost:3306/project_ap
+      fdb7.awardspace.net/1874184_domedb
    </property>
-   <property name="hibernate.connection.username">
-      root
-   </property>
-   <property name="hibernate.connection.password">123</property>
+   <property name="hibernate.connection.username">1874184_domedb</property>
+   <property name="hibernate.connection.password">teemeres12</property>
    <!-- Connection pool c3p0 -->
   <property name="hibernate.c3p0.min_size">5</property>
   <property name="hibernate.c3p0.max_size">20</property>
