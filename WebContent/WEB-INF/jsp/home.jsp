@@ -227,7 +227,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Mosque</h4>
       </div>
       <div class="modal-body">
       <img src="${pageContext.request.contextPath}/resources/img/loader.gif">
@@ -341,7 +341,7 @@ function createMarker(place) {
   markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
   	$('#myModal').modal('show');
-  	$('#myModal .modal-body').load('/modal.load');
+  	$('#myModal .modal-body').load("${pageContext.request.contextPath}/modal.load", {data : place.place_id});
 });
 }
   // Try W3C Geolocation (Preferred)
