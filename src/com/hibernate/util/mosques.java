@@ -8,7 +8,14 @@ public class mosques {
 	int lat,lng,capacity;
 	prayer_time times;
 	Set<users> subscribers;
+	users admin;
 	
+	public users getAdmin() {
+		return admin;
+	}
+	public void setAdmin(users admin) {
+		this.admin = admin;
+	}
 	public Set<users> getSubscribers() {
 		return subscribers;
 	}

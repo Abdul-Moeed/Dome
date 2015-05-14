@@ -20,6 +20,9 @@
          <key column="idmosque"/>
          <many-to-many column="cnic" class="com.hibernate.util.users"/>
       </set>
+      <many-to-one name="admin" class="com.hibernate.util.users"
+            column="cnic" unique="true" cascade="all" />
+             
       </class>  
                 
      </hibernate-mapping> 

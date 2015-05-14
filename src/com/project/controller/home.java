@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hibernate.util.hibernate_session;
 import com.hibernate.util.mosques;
 import com.hibernate.util.prayer_time;
+import com.hibernate.util.users;
  
 @Controller
 public class home {
@@ -19,6 +22,7 @@ public class home {
 		ModelAndView model = new ModelAndView("home");
 		return model;
 	}
+	@SuppressWarnings("unused")
 	@RequestMapping("/mosque_data.json")
 	public @ResponseBody String handle_data(@RequestBody String data){
 		Session session = hibernate_session.getSessionFactory().openSession();
@@ -28,6 +32,7 @@ public class home {
 		if (msq==null)
 			return "{\"status\" : \"404\"}";
 		else {
+			Set<users> set = msq.getSubscribers();
 			prayer_time time = msq.getTimes();
 			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\",\"fajar\": \""+time.getFajar()+ "\"" + ",\"zuhr\": \""+time.getZuhr()+ "\"" +",\"asar\": \""+time.getAsar()+ "\"" +",\"maghrib\": \""+time.getMaghrib()+ "\"" +",\"esha\": \""+time.getEsha()+ "\"" +",\"pic\": \""+msq.getPic()+ "\"" + "}";
 		}
