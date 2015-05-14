@@ -1,11 +1,20 @@
 package com.hibernate.util;
 
+import java.util.Set;
+
 public class mosques {
 	
 	String place_id, place_name, jumma_time, eid_time, sect, pic;
 	int lat,lng,capacity;
 	prayer_time times;
+	Set<users> subscribers;
 	
+	public Set<users> getSubscribers() {
+		return subscribers;
+	}
+	public void setSubscribers(Set<users> subscribers) {
+		this.subscribers = subscribers;
+	}
 	public prayer_time getTimes() {
 		return times;
 	}

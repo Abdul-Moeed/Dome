@@ -16,6 +16,10 @@
       <property name="capacity" column="capacity" type="int"/>
       <property name="pic" column="picture" type="string"/>
       <one-to-one name="times" cascade="all"></one-to-one>
+	  <set name="subscribers" cascade="all" table="subscribers">
+         <key column="idmosque"/>
+         <many-to-many column="cnic" class="com.hibernate.util.users"/>
+      </set>
       </class>  
                 
      </hibernate-mapping> 

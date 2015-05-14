@@ -29,7 +29,7 @@ public class home {
 			return "{\"status\" : \"404\"}";
 		else {
 			prayer_time time = msq.getTimes();
-			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\",\"fajar\": \""+time.getFajar()+ ",\"zuhr\": \""+time.getZuhr()+",\"asar\": \""+time.getAsar()+",\"maghrib\": \""+time.getMaghrib()+",\"esha\": \""+time.getEsha()+",\"pic\": \""+msq.getPic()+ "}";
+			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\",\"fajar\": \""+time.getFajar()+ "\"" + ",\"zuhr\": \""+time.getZuhr()+ "\"" +",\"asar\": \""+time.getAsar()+ "\"" +",\"maghrib\": \""+time.getMaghrib()+ "\"" +",\"esha\": \""+time.getEsha()+ "\"" +",\"pic\": \""+msq.getPic()+ "\"" + "}";
 		}
 	}
 }
