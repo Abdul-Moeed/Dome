@@ -34,7 +34,14 @@ public class home {
 		else {
 			Set<users> set = msq.getSubscribers();
 			prayer_time time = msq.getTimes();
+			users admin = msq.getAdmin();
+			System.out.println(admin.getCnic());
 			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\",\"fajar\": \""+time.getFajar()+ "\"" + ",\"zuhr\": \""+time.getZuhr()+ "\"" +",\"asar\": \""+time.getAsar()+ "\"" +",\"maghrib\": \""+time.getMaghrib()+ "\"" +",\"esha\": \""+time.getEsha()+ "\"" +",\"pic\": \""+msq.getPic()+ "\"" + "}";
 		}
+	}
+	@RequestMapping("/modal.load")
+	public ModelAndView handle_modal(){
+		ModelAndView model = new ModelAndView("modal");
+		return model;
 	}
 }

@@ -222,7 +222,21 @@
             </div>
         </div>
     </aside>
-
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+      <img src="${pageContext.request.contextPath}/resources/img/loader.gif">
+        </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
     
 
     <!-- Footer -->
@@ -326,22 +340,8 @@ function createMarker(place) {
 });
   markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
-  	infowindow.setContent("<img src=\"${pageContext.request.contextPath}/resources/img/loader.gif\">");
-  	 $.ajax({
-            url : '${pageContext.request.contextPath}/mosque_data.json',
-            method : 'POST',
-            dataType : "json",
-            data : place.place_id,
-            success : function(data) {
-            	if (data["status"]=="404")
-            		infowindow.setContent("Not Found in Database.");
-            	else
-            		infowindow.setContent("Name : "+place.name+"<br> Latitude : "+place.geometry.location.lat()+"|| Longitude : "+place.geometry.location.lng()+"<br> Jumma Prayers : "+data["jumma_time"]+"|| Mosque Capacity(Approx.) : "+data["capacity"]+"<br> Eid Prayers : "+data["eid_time"]+"|| Sect : "+data["sect"]+"<br>"+place.types);
-            },
-            error : function (data) {
-            }
-        });
-     infowindow.open(map, this);
+  	$('#myModal').modal('show');
+  	$('#myModal .modal-body').load('/modal.load');
 });
 }
   // Try W3C Geolocation (Preferred)
