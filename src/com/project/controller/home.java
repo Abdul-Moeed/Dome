@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hibernate.util.hibernate_session;
 import com.hibernate.util.mosques;
+import com.hibernate.util.prayer_time;
  
 @Controller
 public class home {
@@ -26,7 +27,9 @@ public class home {
 		mosques msq = (mosques) session.get(mosques.class, new String(data));
 		if (msq==null)
 			return "{\"status\" : \"404\"}";
-		else
-			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\"}";
+		else {
+			prayer_time time = msq.getTimes();
+			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\",\"fajar\": \""+time.getFajar()+ ",\"zuhr\": \""+time.getZuhr()+",\"asar\": \""+time.getAsar()+",\"maghrib\": \""+time.getMaghrib()+",\"esha\": \""+time.getEsha()+",\"pic\": \""+msq.getPic()+ "}";
+		}
 	}
 }

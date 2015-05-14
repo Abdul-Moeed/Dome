@@ -4,6 +4,8 @@ public class prayer_time {
 	String fajar, zuhr, asar, maghrib, esha;
 	String place_id;
 	mosques mosq;
+	
+	
 	public String getFajar() {
 		return fajar;
 	}

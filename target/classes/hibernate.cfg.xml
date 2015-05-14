@@ -20,6 +20,7 @@
   
    <!-- List of XML mapping files -->
    <mapping resource="mosques.hbm.xml"/>
+   <mapping resource="prayer_time.hbm.xml"/>
 
 </session-factory>
 </hibernate-configuration>

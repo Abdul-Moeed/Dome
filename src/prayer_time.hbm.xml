@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+    <!DOCTYPE hibernate-mapping PUBLIC  
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+      
+     <hibernate-mapping>  
+      <class name="com.hibernate.util.prayer_time" table="prayer_time">  
+        <id name="place_id" type="string" column="idmosque">
+        	<generator class="foreign">
+				<param name="property">mosq</param>
+			</generator>
+        </id>  
+                
+      <property name="fajar" column="fajar" type="string"/>
+      <property name="zuhr" column="zuhr" type="string"/>
+      <property name="asar" column="asar" type="string"/>
+      <property name="maghrib" column="maghrib" type="string"/>
+      <property name="esha" column="esha" type="string"/>
+      <one-to-one name="mosq"></one-to-one>
+      </class>  
+                
+     </hibernate-mapping> 

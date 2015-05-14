@@ -15,6 +15,7 @@
       <property name="lng" column="mosques_long" type="int"/>
       <property name="capacity" column="capacity" type="int"/>
       <property name="pic" column="picture" type="string"/>
+      <one-to-one name="times" cascade="all"></one-to-one>
       </class>  
                 
      </hibernate-mapping> 
