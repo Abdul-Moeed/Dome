@@ -4,7 +4,14 @@ public class mosques {
 	
 	String place_id, place_name, jumma_time, eid_time, sect, pic;
 	int lat,lng,capacity;
+	prayer_time times;
 	
+	public prayer_time getTimes() {
+		return times;
+	}
+	public void setTimes(prayer_time times) {
+		this.times = times;
+	}
 	public String getPlace_id() {
 		return place_id;
 	}
@@ -53,11 +60,11 @@ public class mosques {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	public String getpic() {
+	public String getPic() {
 		return pic;
 	}
-	public void setpic(String url) {
-		this.pic = url;
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 	
 }
