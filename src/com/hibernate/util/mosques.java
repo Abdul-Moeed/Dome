@@ -2,7 +2,7 @@ package com.hibernate.util;
 
 public class mosques {
 	
-	String place_id, place_name, jumma_time, eid_time, sect;
+	String place_id, place_name, jumma_time, eid_time, sect, pic;
 	int lat,lng,capacity;
 	
 	public String getPlace_id() {
@@ -52,6 +52,12 @@ public class mosques {
 	}
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+	public String getpic() {
+		return pic;
+	}
+	public void setpic(String url) {
+		this.pic = url;
 	}
 	
 }
