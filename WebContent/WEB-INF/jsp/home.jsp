@@ -230,7 +230,6 @@
         <h4 class="modal-title" id="myModalLabel">Mosque</h4>
       </div>
       <div class="modal-body">
-      <img src="${pageContext.request.contextPath}/resources/img/loader.gif">
         </div>
       <div class="modal-footer">
       </div>
@@ -340,6 +339,7 @@ function createMarker(place) {
 });
   markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
+	$('myModal .modal-body').html("<img src=\"${pageContext.request.contextPath}/resources/img/loader.gif\">");
   	$('#myModal').modal('show');
   	$('#myModal .modal-body').load("${pageContext.request.contextPath}/modal.load", {data : place.place_id});
 });
