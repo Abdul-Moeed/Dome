@@ -12,5 +12,6 @@
         <url-pattern>/home.html</url-pattern>
         <url-pattern>/mosque_data.json</url-pattern>
         <url-pattern>/modal.load</url-pattern>
-    </servlet-mapping>
+        <url-pattern>/user.login</url-pattern>
+        </servlet-mapping>
 </web-app>

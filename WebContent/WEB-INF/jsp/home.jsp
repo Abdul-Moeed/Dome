@@ -104,7 +104,6 @@
                                     <strong>Service Name</strong>
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -117,7 +116,6 @@
                                     <strong>Service Name</strong>
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -130,7 +128,6 @@
                                     <strong>Service Name</strong>
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -143,9 +140,15 @@
                                     <strong>Service Name</strong>
                                 </h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
+                        <div class="navbar-form navbar-left" role="search">
+        							<div class="form-group">
+          							<input type="number" class="form-control" placeholder="cnic" id="cnic">
+          							<input type="password" class="form-control" placeholder="Password" id="password">
+        							</div>
+        							<button type="button" class="btn btn-default" id="signin">Sign in</button>
+      							</div>
                     </div>
                     <!-- /.row (nested) -->
                 </div>
@@ -289,6 +292,13 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    $("#signin").click(function(){
+    	$.ajax({url: "${pageContext.request.contextPath}/user.login", data : JSON.stringify({"cnic" : $("#cnic").val(), "pass" : $("#password").val()}) ,type:"POST",
+    	contentType: 'application/json',accepts : 'application/json', success: function(result){
+        	alert(result);
+    	}});
     });
 
     // Scrolls to the selected menu item on the page
