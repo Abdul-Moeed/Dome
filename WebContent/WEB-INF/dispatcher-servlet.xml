@@ -38,6 +38,11 @@
         <ref bean="sessionFactory" />
     </constructor-arg>
 	</bean>
+	<bean id="usrdl" class="com.hibernate.dao.userdaoimpl">
+    <constructor-arg>
+        <ref bean="sessionFactory" />
+    </constructor-arg>
+	</bean>
 		<mvc:resources mapping="/resources/**" location="/resources/" />
 		<mvc:annotation-driven /><tx:annotation-driven/>
 <bean id="transactionManager"
