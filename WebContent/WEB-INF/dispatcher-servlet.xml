@@ -45,6 +45,11 @@
 	</bean>
 		<mvc:resources mapping="/resources/**" location="/resources/" />
 		<mvc:annotation-driven /><tx:annotation-driven/>
+		<bean id="uservalidator" class="com.project.validator.userv" />
+		<bean id="userloginvalidator" class="com.project.validator.userlog" />
+		<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+			<property name="basename" value="com/project/validator/prop" />
+  		</bean>
 <bean id="transactionManager"
     class="org.springframework.orm.hibernate4.HibernateTransactionManager">
     <property name="sessionFactory" ref="sessionFactory" />

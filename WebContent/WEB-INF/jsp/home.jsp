@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+    <title>Dome</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,6 @@
     </head>
 
     <body>
-
         <!-- Navigation -->
         <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
         <nav id="sidebar-wrapper">
@@ -68,7 +67,6 @@
                 </li>
             </ul>
         </nav>
-
         <!-- Header -->
         <header id="top" class="header">
             <div class="text-vertical-center">
@@ -86,8 +84,6 @@
         </div>
 
         <!-- Map -->
-
-    </section>
 
     <!-- Services -->
     <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
@@ -149,11 +145,14 @@
                       <% if (((users)session.getAttribute("users")).getName()==null){ %>  
 					 <form:form method="POST" action="${pageContext.request.contextPath}/user.login" class="navbar-form navbar-left" role="search" modelAttribute="users">
         	<div class="form-group">
-          		<form:label path="cnic"/><form:input path="cnic"  type="number" class="form-control" placeholder="cnic" id="cnic"/>
-          		<form:label path="password"/><form:input path="password" class="form-control" placeholder="Password" id="password"/>
+          		<form:label path="cnic"/><form:input path="cnic"  type="number" class="form-control" placeholder="cnic"/>
+          		<form:errors path="cnic" cssStyle="color: #ff0000;"/>
+          		<form:label path="password"/><form:input path="password" class="form-control" type="password" placeholder="Password"/>
+          		<form:errors path="password" cssStyle="color: #ff0000;"/>
         	</div>
         		<input type="submit" value="sign-in" class="btn btn-default"/>
 					</form:form>
+					<button type="button" class="btn btn-default" id="signup">Sign-up</button>
 					<% } else {%>
 					<h1>Welcome <%=((users)session.getAttribute("users")).getName()%> </h1>
 					<form action="${pageContext.request.contextPath}/sign-out" method="POST"><input type="submit" class="btn btn-default" value="sign-out"/></form>
@@ -248,7 +247,20 @@
     </div>
   </div>
 </div>
-    
+    <div class="modal fade" id="usercred" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">User</h4>
+      </div>
+      <div class="modal-body">
+        </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -303,11 +315,10 @@
         $("#sidebar-wrapper").toggleClass("active");
     });
 
-    $("#signin").click(function(){
-    	$.ajax({url: "${pageContext.request.contextPath}/user.login", data : JSON.stringify({"cnic" : $("#cnic").val(), "pass" : $("#password").val()}) ,type:"POST",
-    	contentType: 'application/json',accepts : 'application/json', success: function(result){
-        	alert(result);
-    	}});
+    $("#signup").click(function(){
+    	$('#usercred .modal-body').html("<img src=\"${pageContext.request.contextPath}/resources/img/loader.gif\">");
+      	$('#usercred').modal('show');
+    	$('#usercred .modal-body').load("${pageContext.request.contextPath}/userup");
     });
 
     // Scrolls to the selected menu item on the page
@@ -358,7 +369,7 @@ function createMarker(place) {
 });
   markers.push(marker);
   google.maps.event.addListener(marker, 'click', function() {
-	$('myModal .modal-body').html("<img src=\"${pageContext.request.contextPath}/resources/img/loader.gif\">");
+	$('#myModal .modal-body').html("<img src=\"${pageContext.request.contextPath}/resources/img/loader.gif\">");
   	$('#myModal').modal('show');
   	$('#myModal .modal-body').load("${pageContext.request.contextPath}/modal.load", {data : place.place_id});
 });

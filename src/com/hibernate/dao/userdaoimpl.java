@@ -24,11 +24,31 @@ public class userdaoimpl implements userdao{
 	}
 	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<users> getuser(int key, String pass) {
+	public List<users> getuser(int key) {
 		Session sess = sf.getCurrentSession();
 		Criteria cr = sess.createCriteria(users.class);
 		cr.add(Restrictions.eq("cnic", key));
-		cr.add(Restrictions.eq("password", pass));
 		return cr.list();
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<users> getuser(String email) {
+		Session sess = sf.getCurrentSession();
+		Criteria cr = sess.createCriteria(users.class);
+		cr.add(Restrictions.eq("email", email));
+		return cr.list();
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<users> getusernum(String phone_number) {
+		Session sess = sf.getCurrentSession();
+		Criteria cr = sess.createCriteria(users.class);
+		cr.add(Restrictions.eq("phone_number", phone_number));
+		return cr.list();
+	}
+	@Override
+	public void save(users user) {
+		Session sess = sf.getCurrentSession();
+		sess.save(user);
 	}
 }

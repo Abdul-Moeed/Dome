@@ -1,3 +1,5 @@
+<%@ page import="com.hibernate.util.users" %>
+<%@ page session="true" %>
         <div class='mosque-image'>
                     <img src='${msqpic}'>
                 </div>
@@ -27,4 +29,9 @@
                             <li>Eid: ${Eid}</li>
                         </ul>
                     </div>
+                    <%if (((users)session.getAttribute("users")).getName()!=null){ %>
+                    	<button type="button" class="btn btn-default" id="report">Report-Info</button>
+                    	<button type="button" class="btn btn-default" id="addmore">Add-Info</button>
+                    <%} %>
+                    
                 </div>

@@ -18,5 +18,11 @@
         <url-pattern>/userlogin.json</url-pattern>
         <url-pattern>/user.login</url-pattern>
         <url-pattern>/sign-out</url-pattern>
+        <url-pattern>/userup</url-pattern>
+        <url-pattern>/values</url-pattern>
         </servlet-mapping>
+         <error-page>
+  			<error-code>404</error-code>
+  			<location>/WEB-INF/jsp/error.jsp</location>
+ 		</error-page>
 </web-app>

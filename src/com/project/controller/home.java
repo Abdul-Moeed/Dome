@@ -56,4 +56,8 @@ public class home {
 		}
 		return model;
 	}
+	@RequestMapping("/userup")
+	public String handle_signup(){
+		return "signup";
+	}
 }
