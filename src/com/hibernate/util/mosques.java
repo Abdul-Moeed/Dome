@@ -4,11 +4,11 @@ import java.util.Set;
 
 public class mosques {
 	
-	String place_id, place_name, jumma_time, eid_time, sect, pic;
+	public String place_id, place_name, jumma_time, eid_time, sect, pic;
 	int lat,lng,capacity;
 	prayer_time times;
 	Set<users> subscribers;
-	users admin;
+	public users admin;
 	
 	public users getAdmin() {
 		return admin;

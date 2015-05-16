@@ -1,25 +1,19 @@
 package com.hibernate.util;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 public class hibernate_session {
-	private static final SessionFactory sessionFactory = buildSessionFactory();
+	private SessionFactory sessionFactory;
 	 
-	private static SessionFactory buildSessionFactory() {
-		try {
-			return new Configuration().configure().buildSessionFactory();
-		} catch (Throwable ex) {
-			System.err.println("Initial SessionFactory creation failed." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}
+	public hibernate_session(SessionFactory session){
+		this.setSessionFactory(session);
 	}
- 
-	public static SessionFactory getSessionFactory() {
+
+	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
- 
-	public static void shutdown() {
-		getSessionFactory().close();
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 }

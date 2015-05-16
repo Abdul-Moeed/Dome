@@ -3,11 +3,11 @@
      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
      "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
       
-     <hibernate-mapping>  
+     <hibernate-mapping >  
       <class name="com.hibernate.util.mosques" table="mosques">  
         <id name="place_id" type="string" column="idmosques"></id>  
                 
-      <property name="place_name" column="mosque_name" type="string"/>
+      <property name="place_name" column="mosque_name" type="string" />
       <property name="jumma_time" column="jumma_timing" type="string"/>
       <property name="eid_time" column="eid_timing" type="string"/>
       <property name="sect" column="sect" type="string"/>
@@ -20,8 +20,7 @@
          <key column="idmosque"/>
          <many-to-many column="cnic" class="com.hibernate.util.users"/>
       </set>
-      <many-to-one name="admin" class="com.hibernate.util.users"
-            column="cnic" unique="true" cascade="all" />
+      <many-to-one name="admin" class="com.hibernate.util.users" column="cnic" unique="true" cascade="all" fetch="select"/>
              
       </class>  
                 

@@ -6,18 +6,7 @@
    <session-factory>
    <property name="hibernate.dialect">
       org.hibernate.dialect.MySQLDialect
-   </property>
-   <property name="hibernate.connection.driver_class">
-      com.mysql.jdbc.Driver
-   </property>
-
-   <!-- Assume test is the database name -->
-   <property name="hibernate.connection.url">
-      jdbc:mysql://localhost:3306/project_ap
-   </property>
-   <property name="hibernate.connection.username">root</property>
-   <property name="hibernate.connection.password"></property>
-  
+   </property>  
    <!-- List of XML mapping files -->
    <mapping resource="mosques.hbm.xml"/>
    <mapping resource="prayer_time.hbm.xml"/>
