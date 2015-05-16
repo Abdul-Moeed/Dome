@@ -151,8 +151,9 @@
           		<form:errors path="password" cssStyle="color: #ff0000;"/>
         	</div>
         		<input type="submit" value="sign-in" class="btn btn-default"/>
+        		<button type="button" class="btn btn-default" id="signup">Sign-up</button>
 					</form:form>
-					<button type="button" class="btn btn-default" id="signup">Sign-up</button>
+					
 					<% } else {%>
 					<h1>Welcome <%=((users)session.getAttribute("users")).getName()%> </h1>
 					<form action="${pageContext.request.contextPath}/sign-out" method="POST"><input type="submit" class="btn btn-default" value="sign-out"/></form>
