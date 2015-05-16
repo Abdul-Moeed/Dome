@@ -36,7 +36,7 @@ public class signup {
             return "signup";
         }
 		String pass = passwordEncoder.encode( user.getPassword());
-		user.setPassword(pass);
+		user.setPassword(pass);user.setStatus("User");user.setRole("ROLE_USER");
 		usdao.save(user);
 		status.setComplete();
 		return "values";

@@ -2,12 +2,18 @@ package com.hibernate.util;
 
 public class users {
 	int cnic;
-	String name, phone_number, email, status, password;
+	String name, phone_number, email, status, password, role;
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public int getCnic() {
 		return cnic;
