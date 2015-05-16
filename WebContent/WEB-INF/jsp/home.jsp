@@ -1,5 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.hibernate.util.users" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,7 +146,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>
                         </div>
-                        
+                      <% if (((users)session.getAttribute("users")).getName()==null){ %>  
 					 <form:form method="POST" action="${pageContext.request.contextPath}/user.login" class="navbar-form navbar-left" role="search" modelAttribute="users">
         	<div class="form-group">
           		<form:label path="cnic"/><form:input path="cnic"  type="number" class="form-control" placeholder="cnic" id="cnic"/>
@@ -152,6 +154,10 @@
         	</div>
         		<input type="submit" value="sign-in" class="btn btn-default"/>
 					</form:form>
+					<% } else {%>
+					<h1>Welcome <%=((users)session.getAttribute("users")).getName()%> </h1>
+					<form action="${pageContext.request.contextPath}/sign-out" method="POST"><input type="submit" class="btn btn-default" value="sign-out"/></form>
+					<%} %>
                     </div>
                     <!-- /.row (nested) -->
                 </div>

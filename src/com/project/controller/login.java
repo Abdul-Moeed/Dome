@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.hibernate.dao.userdao;
 import com.hibernate.util.users;
 
@@ -26,8 +24,8 @@ public class login {
 	@Autowired
 	private userdao usdao;
 	@RequestMapping(value = "/getuser", method = RequestMethod.GET)
-	   public Model user(@ModelAttribute("users")users user, Model model) {
-		return model;
+	   public Model user(@ModelAttribute("users")users user) {
+		return null;
 	   }
 	@RequestMapping(value="/userlogin.json", method=RequestMethod.POST)
 	public  @ResponseBody String check_login(@ModelAttribute users user, @RequestBody String data) throws ParseException{
@@ -46,14 +44,13 @@ public class login {
 		return "true";
 	}
 	@RequestMapping(value="/user.login", method=RequestMethod.POST)
-	public ModelAndView loginuser(@ModelAttribute("users")users user,ModelMap modelm){
+	public String loginuser(@ModelAttribute("users")users user,ModelMap modelm){
 		List<users> list = usdao.getuser(user.getCnic(), user.getPassword());
-		ModelAndView model = new ModelAndView("home");
 		if (list.isEmpty())
-			return null;
+			return "redirect:home.jsp";
 		else {
 			user.setName(list.get(0).getName());
-			return model;
+			return "redirect:home.jsp";
 		}
 	}
 }
