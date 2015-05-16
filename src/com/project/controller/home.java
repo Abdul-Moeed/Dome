@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hibernate.dao.mosquedao;
@@ -16,6 +17,7 @@ import com.hibernate.util.prayer_time;
 import com.hibernate.util.users;
  
 @Controller
+@SessionAttributes({"users"})
 public class home {
     @Autowired
     private mosquedao msqdao;

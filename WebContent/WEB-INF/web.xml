@@ -17,5 +17,6 @@
         <url-pattern>/modal.load</url-pattern>
         <url-pattern>/userlogin.json</url-pattern>
         <url-pattern>/user.login</url-pattern>
+        <url-pattern>/checking</url-pattern>
         </servlet-mapping>
 </web-app>
