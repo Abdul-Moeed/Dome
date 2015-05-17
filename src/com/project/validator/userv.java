@@ -13,7 +13,7 @@ public class userv implements Validator {
 	@Autowired
 	private userdao usdao;
 	@Override
-	public boolean supports(Class<?> classz) {
+	public boolean supports(Class<?> classz){
 		return users.class.equals(classz);
 	}
 
