@@ -1,13 +1,10 @@
 package com.project.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,17 +26,6 @@ public class home {
 	public ModelAndView helloWorld() {
 		ModelAndView model = new ModelAndView("home");
 		return model;
-	}
-	@RequestMapping("/mosque_data.json")
-	public @ResponseBody String handle_data(HttpServletRequest req){
-		String data = (String) req.getParameter("data");
-        mosques msq = msqdao.getmsq(data);
-		if (msq==null)
-			return "{\"status\" : \"404\"}";
-		else {
-			prayer_time time = msq.getTimes();
-			return "{\"jumma_time\" :\"" + msq.getJumma_time() + "\", \"capacity\" :\""+ msq.getCapacity() + "\", \"eid_time\" : \"" + msq.getEid_time() + "\", \"sect\" : \"" + msq.getSect() + "\"" +",\"status\":\"200\",\"fajar\": \""+time.getFajar()+ "\"" + ",\"zuhr\": \""+time.getZuhr()+ "\"" +",\"asar\": \""+time.getAsar()+ "\"" +",\"maghrib\": \""+time.getMaghrib()+ "\"" +",\"esha\": \""+time.getEsha()+ "\"" +",\"pic\": \""+msq.getPic()+ "\"" + "}";
-		}
 	}
 	@RequestMapping("/modal.load")
 	public ModelAndView handle_modal(@RequestBody String data){

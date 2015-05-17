@@ -23,7 +23,8 @@ public class mosquedaoimpl implements mosquedao{
 	public mosques getmsq(String key) {
 		Session sess = sf.getCurrentSession();
 		mosques msq = (mosques) sess.get(mosques.class, key);
-		Hibernate.initialize(msq.admin);
+		if (msq!=null)
+			Hibernate.initialize(msq.admin);
 		return msq;
 	}
 }

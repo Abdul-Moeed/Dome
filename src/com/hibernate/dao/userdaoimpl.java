@@ -49,6 +49,6 @@ public class userdaoimpl implements userdao{
 	@Transactional
 	public void save(users user) {
 		Session sess = sf.getCurrentSession();
-		sess.save(user);
+		sess.merge(user);
 	}
 }
