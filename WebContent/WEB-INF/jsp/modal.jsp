@@ -33,5 +33,4 @@
                     	<button type="button" class="btn btn-default" id="report">Report-Info</button>
                     	<button type="button" class="btn btn-default" id="addmore">Add-Info</button>
                     <%} %>
-                    
                 </div>
