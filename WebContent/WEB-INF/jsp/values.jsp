@@ -4,7 +4,6 @@
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta http-equiv="refresh" content="5;url=http://domespringhibernate-dbap.rhcloud.com/home.jsp" />
 	<meta charset="utf-8">
