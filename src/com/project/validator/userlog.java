@@ -8,7 +8,6 @@ import org.springframework.validation.Validator;
 
 import com.hibernate.dao.userdao;
 import com.hibernate.util.users;
-
 @Component
 public class userlog implements Validator{
 	@Autowired
